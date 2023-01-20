@@ -1,4 +1,4 @@
-require 'simplecov'
+require "simplecov"
 
 SimpleCov.start "rails" do
   enable_coverage(:branch)
