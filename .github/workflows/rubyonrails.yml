@@ -74,4 +74,4 @@ jobs:
         with:
           bundler-cache: true
       - name: StandardRB
-        run: standardrb
+        run: bundle exec standardrb
