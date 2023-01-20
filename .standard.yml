@@ -1,0 +1,5 @@
+ignore:                 # default: []
+  - 'config/puma.rb'
+  - 'db/schema.rb'
+  - 'app/**/*':
+    - Layout/SpaceInsideHashLiteralBraces
