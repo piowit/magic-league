@@ -31,8 +31,8 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
-      - name: Run tests
-        run: rspec
+      - name: Run rspec
+        run: bundle exec rspec
 
   seeds:
     runs-on: ubuntu-latest
@@ -73,5 +73,5 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Lint Ruby files
-        run: bin/rubocop --parallel
+      - name: StandardRB
+        run: standardrb
