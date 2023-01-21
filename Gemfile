@@ -17,12 +17,8 @@ gem "devise"
 gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.1"
 gem "foreman"
-
-# Use Sass to process CSS
-# gem "sassc-rails"
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "view_component"
+gem "lookbook"
 
 group :development, :test do
   # rspec
