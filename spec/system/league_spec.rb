@@ -40,4 +40,25 @@ RSpec.describe "League spec", type: :feature do
     expect(page).to have_content league.start_date
     expect(page).to have_content league.end_date
   end
+
+  it "updates league" do
+    create(:league, start_date: Date.current + 1.month, end_date: Date.current + 2.months)
+
+    login_as create(:user)
+    visit root_path
+    click_link "Leagues"
+
+    click_link "Edit"
+    fill_in "league[name]", with: "edited name"
+    fill_in "league[description]", with: "edited description"
+    find("#league_start_date").set(Date.current + 1.day)
+    find("#league_end_date").set(Date.current + 5.day)
+    click_button "Update League"
+
+    click_link "Show"
+    expect(page).to have_content "edited name"
+    expect(page).to have_content "edited description"
+    expect(page).to have_content Date.current + 1.day
+    expect(page).to have_content Date.current + 5.day
+  end
 end
