@@ -66,6 +66,12 @@ jobs:
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
+      - name: run yarn
+        run: yarn install --check-files
+      - name: Run yarn build
+        run: yarn build
+      - name: Run yarn css
+        run: yarn build:css
       # Add or replace test runners here
       - name: Run seeds
         run: bin/rails db:seed
