@@ -1,2 +1,10 @@
-<h1>Index :D</h1>
-<%= button_to "logout", destroy_user_session_path, method: :delete, data: {turbo: false} %>
+<div class="container">
+  <div class="notification is-secondary">
+    <div>
+      <%= button_to "logout", destroy_user_session_path, method: :delete, data: {turbo: false}, class: "button is-danger" %>
+    </div>
+    <div>
+      <h1>Hello fellow spellcaster!</h1>
+    </div>
+  </div>
+</div>
