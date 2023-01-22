@@ -20,6 +20,8 @@ gem "jsbundling-rails", "~> 1.1"
 gem "foreman"
 gem "view_component"
 gem "lookbook"
+gem "trestle"
+gem "trestle-auth"
 
 group :development, :test do
   # rspec

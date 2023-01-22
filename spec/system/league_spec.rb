@@ -5,7 +5,7 @@ RSpec.describe "League spec", type: :feature do
     league_first = create(:league)
     league_second = create(:league)
 
-    login_as create(:user)
+    login_as create(:user), scope: :user
     visit root_path
 
     click_link "Leagues"
@@ -21,7 +21,7 @@ RSpec.describe "League spec", type: :feature do
   it "creates leagues" do
     league = build(:league)
 
-    login_as create(:user)
+    login_as create(:user), scope: :user
     visit root_path
 
     click_link "Leagues"
@@ -44,7 +44,7 @@ RSpec.describe "League spec", type: :feature do
   it "updates league" do
     create(:league, start_date: Date.current + 1.month, end_date: Date.current + 2.months)
 
-    login_as create(:user)
+    login_as create(:user), scope: :user
     visit root_path
     click_link "Leagues"
 
