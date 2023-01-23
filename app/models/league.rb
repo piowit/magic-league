@@ -2,6 +2,9 @@ class League < ApplicationRecord
   validates :name, :start_date, :end_date, presence: true
   validate :end_date_after_start_date, if: :dates_present?
 
+  has_many :ownerships
+  has_many :owners, through: :ownerships, source: :user
+
   private
 
   def end_date_after_start_date
