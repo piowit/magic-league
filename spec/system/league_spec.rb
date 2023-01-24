@@ -19,26 +19,27 @@ RSpec.describe "League spec", type: :feature do
   end
 
   it "creates leagues" do
-    league = build(:league)
+    user = create(:user)
 
-    login_as create(:user), scope: :user
+    login_as user, scope: :user
     visit root_path
 
     click_link "Leagues"
     click_link "New League"
 
-    fill_in "league[name]", with: league.name
-    fill_in "league[description]", with: league.description
-    find("#league_start_date").set((league.start_date))
-    find("#league_end_date").set((league.end_date))
+    fill_in "league[name]", with: "New league"
+    fill_in "league[description]", with: "Description"
+    find("#league_start_date").set(Date.current)
+    find("#league_end_date").set(Date.current + 1.month)
 
     expect do
       click_button "Create League"
     end.to change(League, :count).by(1)
 
-    expect(page).to have_content league.name
-    expect(page).to have_content league.start_date
-    expect(page).to have_content league.end_date
+    expect(page).to have_content "New league"
+    expect(page).to have_content Date.current
+    expect(page).to have_content Date.current + 1.month
+    expect(League.find_by(name: "New league").owners).to include(user)
   end
 
   it "updates league" do

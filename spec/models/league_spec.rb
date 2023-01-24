@@ -8,4 +8,6 @@ RSpec.describe League, type: :model do
   it { expect(build(:league)).to be_valid }
   it { expect(build(:league, start_date: Date.current, end_date: Date.current)).not_to be_valid }
   it { expect(build(:league, start_date: Date.current, end_date: Date.current - 1.day)).not_to be_valid }
+  it { expect(build(:league, owners: [])).not_to be_valid }
+  it { expect(build(:league, owners: [create(:user)])).to be_valid }
 end

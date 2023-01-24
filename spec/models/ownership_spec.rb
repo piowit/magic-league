@@ -17,10 +17,9 @@ RSpec.describe Ownership, type: :model do
   end
 
   it "has two leagues and one owner" do
-    league1 = create(:league)
-    league2 = create(:league)
     user = create(:user)
-    user.owned_leagues << [league1, league2]
+    league1 = create(:league, owners: [user])
+    league2 = create(:league, owners: [user])
 
     expect(user.owned_leagues).to include(league1, league2)
     expect(league1.owners).to include(user)
