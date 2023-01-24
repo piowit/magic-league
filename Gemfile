@@ -22,6 +22,7 @@ gem "view_component"
 gem "lookbook"
 gem "trestle"
 gem "trestle-auth"
+gem "pundit"
 
 group :development, :test do
   # rspec

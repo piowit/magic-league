@@ -27,6 +27,7 @@ class LeaguesController < ApplicationController
 
   def update
     league = League.find(params[:id])
+    authorize league
     if league.update(league_params)
       redirect_to leagues_path, notice: "League was successfully updated."
     else
@@ -37,6 +38,6 @@ class LeaguesController < ApplicationController
   private
 
   def league_params
-    params.require(:league).permit(:name, :description, :start_date, :end_date)
+    params.require(:league).permit(:name, :description, :start_date, :end_date).merge(owners: [current_user])
   end
 end
