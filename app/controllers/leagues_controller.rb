@@ -27,6 +27,7 @@ class LeaguesController < ApplicationController
 
   def update
     league = League.find(params[:id])
+    authorize league
     if league.update(league_params)
       redirect_to leagues_path, notice: "League was successfully updated."
     else

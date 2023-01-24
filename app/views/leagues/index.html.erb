@@ -17,11 +17,12 @@
           <td><%= league.start_date %></td>
           <td><%= league.end_date %></td>
           <td><%= link_to 'Show', league %></td>
-          <td><%= link_to 'Edit', edit_league_path(league) %></td>
+          <% if policy(league).update? %>
+            <td><%= link_to "Edit", edit_league_path(league) %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
 </table>
-
 
  <%= link_to 'New League', new_league_path %>

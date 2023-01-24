@@ -43,9 +43,10 @@ RSpec.describe "League spec", type: :feature do
   end
 
   it "updates league" do
-    create(:league, start_date: Date.current + 1.month, end_date: Date.current + 2.months)
+    user = create(:user)
+    create(:league, start_date: Date.current + 1.month, end_date: Date.current + 2.months, owners: [user])
 
-    login_as create(:user), scope: :user
+    login_as user, scope: :user
     visit root_path
     click_link "Leagues"
 
