@@ -4,6 +4,8 @@ class League < ApplicationRecord
 
   has_many :ownerships
   has_many :owners, through: :ownerships, source: :user
+  has_many :memberships
+  has_many :players, through: :memberships, source: :user
 
   private
 
