@@ -38,7 +38,7 @@ class LeaguesController < ApplicationController
   def join
     league = League.find(params[:id])
     authorize league
-    if league.players << [current_user]
+    if Membership.new(league: league, user: current_user).save
       redirect_to leagues_path, notice: "You joined to #{league.name} league!"
     else
       render :index, locals: { league: league }, status: :unprocessable_entity

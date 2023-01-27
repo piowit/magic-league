@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :leagues, only: %i[index new create show edit update]
 
   resources :leagues do
-    patch "join", on: :member
+    post "join", on: :member
   end
 end
