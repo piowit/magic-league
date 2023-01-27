@@ -7,10 +7,14 @@ class LeaguePolicy
   end
 
   def edit?
-    league.owners.include? user
+    league.owners.include?(user)
   end
 
   def update?
     edit?
+  end
+
+  def join?
+    !league.players.include?(user)
   end
 end

@@ -35,6 +35,16 @@ class LeaguesController < ApplicationController
     end
   end
 
+  def join
+    league = League.find(params[:id])
+    authorize league
+    if league.players << [current_user]
+      redirect_to leagues_path, notice: "You joined to #{league.name} league!"
+    else
+      render :index, locals: { league: league }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def league_params

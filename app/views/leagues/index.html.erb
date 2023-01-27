@@ -18,6 +18,7 @@
           <td><%= league.end_date %></td>
           <td><%= link_to "Show", league %></td>
           <td><%= link_to "Edit", edit_league_path(league) if policy(league).update? %></td>
+          <td><%= link_to "Join", join_league_path(league), data: { turbo_method: :patch }  %></td>
         </tr>
       <% end %>
     </tbody>
