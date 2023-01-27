@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   mount Lookbook::Engine, at: "/lookbook" if Rails.env.development?
 
   resources :leagues, only: %i[index new create show edit update]
+
+  resources :leagues do
+    post "join", on: :member
+  end
 end

@@ -3,4 +3,6 @@ class User < ApplicationRecord
 
   has_many :ownerships
   has_many :owned_leagues, through: :ownerships, source: :league
+  has_many :memberships
+  has_many :leagues, through: :memberships
 end
