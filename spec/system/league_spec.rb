@@ -63,4 +63,15 @@ RSpec.describe "League spec", type: :feature do
     expect(page).to have_content Date.current + 1.day
     expect(page).to have_content Date.current + 5.day
   end
+
+  it "joins league" do
+    league = create(:league)
+
+    login_as create(:user), scope: :user
+    visit root_path
+    click_link "Leagues"
+
+    click_link "Join"
+    expect(page).to have_content "You joined to #{league.name} league!"
+  end
 end
