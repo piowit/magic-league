@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :leagues do
     post "join", on: :member
   end
+
+  resources :contests, only: %i[index new create show]
 end

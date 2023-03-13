@@ -1,5 +1,6 @@
 class LeaguesController < ApplicationController
   before_action :authenticate_user!
+
   def index
     render :index, locals: { leagues: League.all }
   end

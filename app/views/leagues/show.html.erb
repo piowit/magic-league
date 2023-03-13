@@ -18,4 +18,26 @@
   <%= league.end_date %>
 </p>
 
+<p>
+
+
+<strong>Contests:</strong>
+<table class='table'>
+    <thead class="table-dark">
+      <tr>
+        <th>Date</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% league.contests.each do |contest| %>
+        <tr>
+          <td><%= contest.date %></td>
+          <td><%= link_to "Show", contest %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
 <%= link_to 'Back', leagues_path %>

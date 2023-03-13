@@ -74,4 +74,17 @@ RSpec.describe "League spec", type: :feature do
     click_link "Join"
     expect(page).to have_content "You joined to #{league.name} league!"
   end
+
+  it "lists contests for league" do
+    contest1 = create(:contest)
+    contest2 = create(:contest, league: contest1.league)
+
+    login_as create(:user), scope: :user
+    visit root_path
+    click_link "Leagues"
+    click_link "Show"
+
+    expect(page).to have_content contest1.date
+    expect(page).to have_content contest2.date
+  end
 end
