@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_06_130003) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_19_153439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_130003) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "memberships_pods", force: :cascade do |t|
+    t.bigint "pod_id", null: false
+    t.bigint "membership_id", null: false
+    t.integer "place"
+    t.integer "points"
+    t.string "commander_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["membership_id"], name: "index_memberships_pods_on_membership_id"
+    t.index ["pod_id"], name: "index_memberships_pods_on_pod_id"
+  end
+
   create_table "ownerships", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "league_id", null: false
@@ -59,6 +71,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_130003) do
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_ownerships_on_league_id"
     t.index ["user_id"], name: "index_ownerships_on_user_id"
+  end
+
+  create_table "pods", force: :cascade do |t|
+    t.bigint "contest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contest_id"], name: "index_pods_on_contest_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,6 +100,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_130003) do
   add_foreign_key "contests", "leagues"
   add_foreign_key "memberships", "leagues"
   add_foreign_key "memberships", "users"
+  add_foreign_key "memberships_pods", "memberships"
+  add_foreign_key "memberships_pods", "pods"
   add_foreign_key "ownerships", "leagues"
   add_foreign_key "ownerships", "users"
+  add_foreign_key "pods", "contests"
 end
