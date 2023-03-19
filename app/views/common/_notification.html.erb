@@ -1,0 +1,13 @@
+<% if alert %>
+  <div class="notification is-danger is-light" >
+    <button class="delete" onclick="this.parentElement.style.display='none'" ></button>
+    <%= alert %>
+  </div>
+<% end %>
+
+<% if notice %>
+  <div class="notification is-info is-light">
+    <button class="delete" onclick="this.parentElement.style.display='none'" ></button>
+    <%= notice %>
+  </div>
+<% end %>
