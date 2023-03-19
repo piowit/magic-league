@@ -12,10 +12,8 @@
 
   <body>
     <div class="container is-secondary">
-      <%= render 'pages/header' %>
-
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render 'common/header' %>
+      <%= render 'common/notification' %>
       
       <%= yield %>
     </div>
