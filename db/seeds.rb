@@ -7,3 +7,9 @@ puts "\n### Users"
   FactoryBot.create(:user, email: "user#{u}@example.com")
   puts "Created user#{u}: user#{u}@example.com, password"
 end
+
+puts "\n### Leagues"
+(1..5).each do |l|
+  FactoryBot.create(:league, name: "League #{l}", owners: [User.find_by(email: "user#{l}@example.com")])
+  puts "Created league: League #{l}"
+end
