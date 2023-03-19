@@ -1,8 +1,41 @@
 <%= simple_form_for league do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
+
+
+  <div class="field">
+    <%= f.label :name, class: "label" %>
+    <div class="control">
+      <%= f.input_field :name, class: "input", placeholder: "Text input" %>
+    </div>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :description, class: "label" %>
+    <div class="control">
+      <%= f.text_area :description, class: "textarea" %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <%= f.label :start_date, class: "label" %>
+        <div class="control">
+          <%= f.input_field :start_date, as: :date, class: "input", html5: true %>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <%= f.label :end_date, class: "label" %>
+        <div class="control">
+          <%= f.input_field :end_date, as: :date, class: "input", html5: true %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <%= f.button :submit %>
 <% end %>

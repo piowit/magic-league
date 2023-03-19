@@ -12,10 +12,14 @@
 
   <body>
     <div class="container is-secondary">
-      <%= render 'common/header' %>
-      <%= render 'common/notification' %>
-      
-      <%= yield %>
+
+      <section  class="section section-light-grey-gradient">
+        <%= render 'common/header' %>
+        <%= render 'common/notification' %>
+        <%= yield %>
+      </section>
+
+      <%= render 'common/footer' %>
     </div>
   </body>
 </html>

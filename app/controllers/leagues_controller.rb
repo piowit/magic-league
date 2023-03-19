@@ -19,7 +19,13 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    render :show, locals: { league: League.find(params[:id]) }
+    league = League.find(params[:id])
+    past_contests = Contest.where(league_id: params[:id]).where("date < ?", Time.current)
+    upcoming_contests = Contest.where(league_id: params[:id]).where("date > ?", Time.current)
+    today_contests = Contest.where(league_id: params[:id]).where("date = ?", Time.current)
+    memberships = Membership.where(league_id: params[:id])
+
+    render :show, locals: { league:, past_contests:, upcoming_contests:, today_contests:, memberships: }
   end
 
   def edit

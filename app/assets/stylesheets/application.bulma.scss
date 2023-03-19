@@ -37,3 +37,19 @@
 // @import "bulma/sass/layout/section.sass";
 
 @import 'bulma/bulma';
+
+.three-lines {
+  line-height: 1.5em; /* Set the line height to 1.5 times the font size */
+  font-size: 16px; /* Set the font size to your desired value */
+  padding: 0; /* Remove any padding to ensure accurate height calculation */
+  height: calc(4.5em + 2px); /* Set the height to 3 lines of text */
+  overflow: hidden; /* Hide any overflow */
+}
+
+.section-light-grey-gradient {
+  background: linear-gradient(to bottom, #f9f9f9, #f9f9f9);
+}
+
+.header-footer-background {
+    background: #f9f9f9;
+}
