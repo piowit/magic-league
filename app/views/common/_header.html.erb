@@ -45,7 +45,7 @@
         <div class="buttons">
           <% if user_signed_in? %>
             <%= button_to "Sign out", destroy_user_session_path, class: 'button is-primary', data: {turbo: false}, method: :delete %>
-          <% else  %>
+          <% else %>
             <%= button_to "Sign up", new_user_registration_path, class: 'button is-primary', data: {turbo: false}, method: :get %>
             <%= button_to "Log in", new_user_session_path, class: 'button is-light', data: {turbo: false}, method: :get %>
           <% end %>
